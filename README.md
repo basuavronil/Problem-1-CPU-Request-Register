@@ -136,18 +136,7 @@ The testbench includes:
 - A **hold-stable checker** that flags any change in the held request during a stall.
 - Five phases: zero wait states, slow cache (3 wait states), gaps with mixed latency, reset while a request is held, and normal operation after reset.
 
-## Run
+<img width="457" height="326" alt="image" src="https://github.com/user-attachments/assets/e1323bf4-76ac-485e-9b88-65ab9b015eba" />
 
-```bash
-iverilog -o sim cpu_req_reg.v tb_cpu_req_reg.v
-vvp sim
-gtkwave cpu_req_reg.vcd
-```
 
-A passing run prints `PASS: <n> requests consumed in order, no errors`.
-
-## What to look for in the waveform
-
-- **Zero wait states:** `req_valid` stays high and a new request loads every cycle. `stall_cpu` never rises.
-- **Slow cache:** `stall_cpu` goes high for the wait cycles while `req_addr` and `req_wdata` stay frozen.
-- **Reset mid-stall:** `req_valid` clears immediately.
+lid` clears immediately.
