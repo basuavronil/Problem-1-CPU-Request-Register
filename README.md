@@ -4,7 +4,20 @@
 
 > A small register stage that latches the CPU's request `{addr, wdata, we, valid}` and holds it unchanged until the cache asserts `ready`, raising `stall_cpu` while the CPU has to wait.
 
-![cpu_req_reg block diagram](docs/cpu_req_reg_diagram.svg)
+```text
+                    clk      rst_n
+                     |         |
+                     v         v
+               +------------------------------+
+ cpu_valid --->|  req_valid  : 1 bit          |---> req_valid
+ cpu_addr  --->|  req_addr   : 32 bits        |---> req_addr
+ cpu_wdata --->|  req_wdata  : 32 bits        |---> req_wdata
+ cpu_we    --->|  req_we     : 1 bit          |---> req_we
+               |                              |
+ stall_cpu <---|  stall = req_valid & ~ready  |<--- ready
+               +------------------------------+
+                        cpu_req_reg
+```
 
 ## Why this block exists
 
