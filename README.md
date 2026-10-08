@@ -2,7 +2,7 @@
 
 # CPU Request Register (`cpu_req_reg`)
 
-> A small register stage that latches the CPU's request `{addr, wdata, we, valid}` and holds it unchanged until the cache asserts `ready`, raising `stall_cpu` while the CPU has to wait.
+> A small register stage that latches the CPU's request `{addr, wdata, we, valid}` and holds it unchanged until the cache asserts `ready`, raising `stall_cpu` while the CPU has to wait
 
 ```text
                     clk      rst_n
